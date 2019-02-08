@@ -59,7 +59,9 @@ class Listener
                         continue;
                     }
 
-                    $broker->subscribe($this->queue, ['id' => $broker->getSessionId()]);
+                    $sessionId = $broker->getSessionId() . '_' .  $this->queue;
+
+                    $broker->subscribe($this->queue, ['id' => $sessionId]);
                     $i = 0;
                 }
 
